@@ -7,19 +7,12 @@
   <meta name="description" content="Displays com computador embutido para veiculação de publicidade em elevadores e ambientes corporativos.">
   <link rel="icon" href="favicon.ico">
   <style>
-    :root { 
-      --bg:#0b0f14; 
-      --card:#121821; 
-      --text:#e8eef6; 
-      --muted:#a8b3c7; 
-      --brand:#21b04b; /* verde 365 */
-      --brand2:#0b0f14; /* preto */
-    }
-    *{box-sizing:border-box} html,body{margin:0}
+    :root{--bg:#0b0f14;--card:#121821;--text:#e8eef6;--muted:#a8b3c7;--brand:#21b04b;--brand-dark:#19913e}
+    *{box-sizing:border-box}html,body{margin:0}
     body{
-      font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu; 
-      color:var(--text); 
-      background:linear-gradient(180deg,#0b0f14, #121821 40%, #0b0f14 100%) fixed;
+      font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu;
+      color:var(--text);
+      background:linear-gradient(180deg,#0b0f14,#121821 40%,#0b0f14 100%) fixed;
     }
     .wrap{max-width:1100px;margin:auto;padding:24px}
     header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0}
@@ -32,17 +25,19 @@
     .hero h2{font-size:36px;margin:0 0 8px;color:var(--brand)}
     .hero p{color:var(--muted);margin:0 0 18px}
     .cta{display:flex;gap:12px;flex-wrap:wrap}
+    /* Botão com gradiente + highlight suave ao hover */
     .btn{
-      background:var(--brand);
-      color:#fff;
-      padding:12px 18px;
-      border-radius:12px;
-      text-decoration:none;
-      font-weight:600;
-      transition:.2s;
+      background:linear-gradient(90deg,var(--brand),var(--brand-dark));
+      background-size:200% 100%;
+      color:#fff;padding:12px 18px;border-radius:12px;
+      text-decoration:none;font-weight:700;letter-spacing:.2px;
+      transition:background-position .35s ease, box-shadow .25s ease, transform .08s ease;
+      box-shadow:0 6px 16px rgba(33,176,75,.15);
+      display:inline-block
     }
-    .btn:hover{filter:brightness(1.1);}
-    .btn.sec{background:transparent;border:1px solid #2a3647;color:var(--text)}
+    .btn:hover{background-position:100% 0;box-shadow:0 10px 26px rgba(33,176,75,.25);transform:translateY(-1px)}
+    .btn:active{transform:translateY(0)}
+    .btn.sec{background:transparent;border:1px solid #2a3647;color:var(--text);box-shadow:none}
     .card{background:var(--card);border:1px solid #1e2733;border-radius:16px;padding:18px}
     .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
     .specs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:10px}
@@ -52,23 +47,11 @@
     .kpi{background:var(--card);border:1px solid #1e2733;border-radius:16px;padding:16px;text-align:center}
     .kpi b{font-size:28px;display:block;color:var(--brand)}
     footer{color:var(--muted);border-top:1px solid #182231;padding:24px 0;margin-top:36px;text-align:center}
-    .wa-fab{
-      position:fixed;
-      right:18px;
-      bottom:18px;
-      background:#25D366;
-      color:#001422;
-      padding:14px 16px;
-      border-radius:999px;
-      font-weight:700;
-      text-decoration:none;
-      box-shadow:0 10px 30px rgba(0,0,0,.35)
-    }
-    @media (max-width:900px){
-      .hero{grid-template-columns:1fr}
-      .grid{grid-template-columns:1fr}
-      .kpis{grid-template-columns:1fr}
-    }
+    .social{display:flex;gap:14px;justify-content:center;margin:10px 0 4px}
+    .social a{display:inline-flex;align-items:center;gap:8px;color:var(--muted);text-decoration:none;border:1px solid #1e2733;padding:8px 12px;border-radius:999px}
+    .social a:hover{color:#fff;border-color:#2a3647;background:#0f1520}
+    .wa-fab{position:fixed;right:18px;bottom:18px;background:#25D366;color:#001422;padding:14px 16px;border-radius:999px;font-weight:700;text-decoration:none;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+    @media (max-width:900px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.kpis{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
@@ -154,6 +137,15 @@
     </section>
 
     <footer>
+      <div class="social">
+        <!-- Troque a URL se o @ for diferente -->
+        <a href="https://instagram.com/365tecnologia" target="_blank" rel="noopener" aria-label="Instagram da 365 Tecnologia">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11zm0 2a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm5.75-.75a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z"/>
+          </svg>
+          @365tecnologia
+        </a>
+      </div>
       © 2025 365 Tecnologia — Displays e soluções DOOH.
     </footer>
   </div>
